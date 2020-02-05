@@ -4,7 +4,7 @@ import sys
 from server import Server
 
 class Client():
-    # This is static variable
+ 
     port = 9500
     
     def __init__(self):
