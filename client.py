@@ -4,6 +4,10 @@ import sys
 from server import Server
 
 class Client():
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 1d898b8447809d1fe05751941a82eea13d7e74f4
     port = 9500
     
     def __init__(self):
