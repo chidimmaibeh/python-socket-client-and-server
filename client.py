@@ -4,7 +4,6 @@ import sys
 from server import Server
 
 class Client():
-    # This is static variable
     port = 9500
     
     def __init__(self):
@@ -29,9 +28,7 @@ if __name__ == "__main__":
      # message = "Hello" # this value is the message should be sent
     print("Input message to send :")
     message = sys.stdin.readline()[:-1]
-   
-    # if len(sys.argv) > 1:
-    #     message = sys.argv[1]
+
 
     client = Client()
     print("Host:", client.host)

@@ -18,7 +18,7 @@ class Server:
         self._acceptConnecton()
 
     def _acceptConnecton(self):
-        print("server move to accept")
+        print("server to accept connection")
         conn, addr = self.socket.accept()
         with conn:
             while True:
