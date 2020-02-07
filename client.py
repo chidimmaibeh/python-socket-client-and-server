@@ -25,14 +25,20 @@ class Client():
         self.socket.sendall(message.encode())
 
 if __name__ == "__main__":
-     # message = "Hello" # this value is the message should be sent
+    # message = "Hello" # this value is the message should be sent
     print("Input message to send :")
     message = sys.stdin.readline()[:-1]
 
-
+    #create a client object. 
     client = Client()
+    
+    #print the client host
     print("Host:", client.host)
+
+    #print the client port
     print("Port:", Client.port)
+
+
     client.getConnection(client.host, Client.port)
 
     print("sending Message:", message)
@@ -40,4 +46,4 @@ if __name__ == "__main__":
     receiveMessage = client.recieveMessage()
     print("received Message :", receiveMessage)
  
- 
+

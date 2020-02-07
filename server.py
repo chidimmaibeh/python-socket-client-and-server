@@ -12,13 +12,13 @@ class Server:
         conn.send(message.encode())
     
     def listen(self, printMesage=True):
-        self.socket.listen()
+        self.socket.listen(5)
         if printMesage:
             print('Server is Listening new Connection on Port : ', Server.port)
         self._acceptConnecton()
 
     def _acceptConnecton(self):
-        print("server to accept connection")
+        print("server to accept the new connection")
         conn, addr = self.socket.accept()
         with conn:
             while True:
