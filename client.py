@@ -1,17 +1,14 @@
 import socket
-import sys
-
-from server import Server
 
 class Client():
-    port = 9500
     
-    def __init__(self):
+    def __init__(self, host, port):
         self.socket = socket.socket()
-        self.host = socket.gethostname()
-    
-    def getConnection(self, host, port):
-        self.socket.connect((self.host, port))
+        self.host = host
+        self.port = port
+
+    def getConnection(self):
+        self.socket.connect((self.host, self.port))
     
     def endConnection(self):
         self.socket.close()
@@ -25,25 +22,31 @@ class Client():
         self.socket.sendall(message.encode())
 
 if __name__ == "__main__":
-    # message = "Hello" # this value is the message should be sent
-    print("Input message to send :")
-    message = sys.stdin.readline()[:-1]
+    # send "Hello" string to the server to receive "Hi" string
+    # any other data "Goodbye" string is received from the Server 
+    # and ends the connection
 
-    #create a client object. 
-    client = Client()
+    message = input("Input message to send :")
+
+    # Initialize a client object. 
+    client = Client(host=socket.gethostname(), port=9500)
     
-    #print the client host
-    print("Host:", client.host)
+    print("Host: ", client.host)
+    print("Port: ", client.port)
 
-    #print the client port
-    print("Port:", Client.port)
-
-
-    client.getConnection(client.host, Client.port)
+    # initialize connection to the server
+    client.getConnection()
 
     print("sending Message:", message)
+    
+    #send the encoded message to the server
     client.sendMessage(message)
-    receiveMessage = client.recieveMessage()
-    print("received Message :", receiveMessage)
+    
+    #receive a response from the server
+    receivedMessage = client.recieveMessage()
+
+    print("received Message :", receivedMessage)
+
+    client.endConnection()
  
 
